@@ -15,6 +15,10 @@ date_default_timezone_set($settings['settings']['app']['timezone']);
 // Create app container
 $container = new Container($settings);
 
+// Load package container. Add new containers to bottom.
+require_once __DIR__ . "/config/filesystem.php";
+require_once __DIR__ . "/config/view.php";
+
 // Create app
 $app = new App($container);
 

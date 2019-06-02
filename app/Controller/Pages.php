@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use App\Controller\Base;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class Pages
+class Pages extends Base
 {
     /**
      * Return homepage
@@ -19,6 +20,6 @@ class Pages
     public function home(Request $request, Response $response, array $data)
     {
         // Return homepage
-        return $response->write('Homepage');
+        return $this->view($response, 'home.twig');
     }
 }

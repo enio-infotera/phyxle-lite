@@ -15,7 +15,9 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "slim/slim": "^3.12"
+        "slim/slim": "^3.12",
+        "symfony/filesystem": "^4.3",
+        "twig/twig": "^2.11"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.3"

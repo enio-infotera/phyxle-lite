@@ -47,6 +47,36 @@ $settings = [
 
             // App timezone
             'timezone' => 'Asia/Colombo'
+        ],
+
+        // View array
+        'view' => [
+            // Templates directory
+            'views' => __DIR__ . '/../resources/views/',
+
+            // Enable debug mode
+            'debug' => false,
+
+            // Templates character set
+            'charset' => 'utf-8',
+
+            // Base template class to render
+            'baseTemplateClass' => '\Twig\Template',
+
+            // Cache directory
+            'cache' => __DIR__ . '/../cache/',
+
+            // Enable cached templates to auto reload
+            'autoReload' => true,
+
+            // Throw error if invalid template variable use
+            'strictVariables' => true,
+
+            // Auto escape characters
+            'autoEscape' => 'html',
+
+            // Optimize templates
+            'optimizations' => -1
         ]
     ]
 ];
