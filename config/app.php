@@ -1,0 +1,52 @@
+<?php
+
+// Settings array
+$settings = [
+    // Settings container
+    'settings' => [
+        // Protocol version used by response object
+        'httpVersion' => '1.1',
+
+        // Size of each response chunk
+        'responseChunkSize' => 4096,
+
+        // Prepend or append output buffer
+        'outputBuffering' => 'prepend',
+
+        // Calculate routes before app middleware
+        'determineRouteBeforeAppMiddleware' => false,
+
+        // Display Slim errors. Set false in production mode.
+        'displayErrorDetails' => true,
+
+        // Add content length header to response object
+        'addContentLengthHeader' => true,
+
+        // Cache file names
+        'routerCacheFile' => false,
+
+        // App array
+        'app' => [
+            // App name
+            'name' => 'Phyxle Lite',
+
+            // App description
+            'description' => 'Rapid web development environment, based on Slim framework (Lite version)',
+
+            // App keywords
+            'keywords' => 'php, slim',
+
+            // App author
+            'author' => 'Enindu Alahapperuma',
+
+            // App URL
+            'url' => 'http://localhost',
+
+            // App email
+            'email' => 'enindu@gmail.com',
+
+            // App timezone
+            'timezone' => 'Asia/Colombo'
+        ]
+    ]
+];
