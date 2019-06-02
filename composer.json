@@ -3,7 +3,8 @@
     "description": "Rapid web development environment, based on Slim framework (Lite version)",
     "keywords": [
         "php",
-        "slim"
+        "slim",
+        "twig"
     ],
     "type": "project",
     "license": "MIT",

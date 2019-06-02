@@ -34,7 +34,7 @@ $settings = [
             'description' => 'Rapid web development environment, based on Slim framework (Lite version)',
 
             // App keywords
-            'keywords' => 'php, slim',
+            'keywords' => 'php, slim, twig',
 
             // App author
             'author' => 'Enindu Alahapperuma',
