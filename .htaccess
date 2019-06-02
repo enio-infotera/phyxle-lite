@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    ##
+    ## Website root directory
+    ##
+    #RewriteBase /
+
+    ##
+    ## Remove URL tailing slashes
+    ##
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R]
+
+    ##
+    ## Blacklist files
+    ##
+    RewriteRule /?\.htaccess$ - [L,F]
+    RewriteRule /?\.json$ - [L,F]
+    RewriteRule /?\.lock$ - [L,F]
+
+    ##
+    ## Standard route
+    ##
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
