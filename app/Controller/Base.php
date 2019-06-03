@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Slim\Container;
+use Slim\Http\Request;
 use Slim\Http\Response;
 
 class Base
@@ -80,5 +81,30 @@ class Base
 
         // Send mail
         return $mail->send($message);
+    }
+
+    /**
+     * Configure input field validation to use in child controllers
+     * 
+     * @param Request $request PSR-7 request object
+     * @param array   $input   Form input data
+     * 
+     * @return array|bool
+     */
+    protected function validator(Request $request, array $input)
+    {
+        // Get validation object
+        $validator = $this->container->get('validation');
+
+        // Validate input fields
+        $validation = $validator->validate($request->getParams(), $input);
+
+        // Check if invalid input fields
+        if($validation->fails()) {
+            return $validation->errors()->firstOfAll();
+        }
+
+        // Return false
+        return;
     }
 }

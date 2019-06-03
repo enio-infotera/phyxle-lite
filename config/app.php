@@ -34,7 +34,7 @@ $settings = [
             'description' => 'Rapid web development environment, based on Slim framework (Lite version)',
 
             // App keywords
-            'keywords' => 'database, php, slim, swift-mailer, twig',
+            'keywords' => 'eloquent, enindu, php, slim, swift-mailer, twig, validation',
 
             // App author
             'author' => 'Enindu Alahapperuma',
@@ -119,6 +119,24 @@ $settings = [
 
             // SMTP password
             'password' => ''
+        ],
+
+        // Validation array
+        'validation' => [
+            // Required error message
+            'required' => 'Cannot leave empty fields',
+
+            // Minimum characters error message
+            'min' => 'Passwords should be minimum 6 characters',
+
+            // Maximum characters error message
+            'max' => 'Passwords should be maximum 32 characters',
+
+            // Email error message
+            'email' => 'Email is invalid',
+
+            // Comparison error message
+            'same' => 'Check confirm password'
         ]
     ]
 ];
