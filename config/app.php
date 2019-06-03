@@ -34,7 +34,7 @@ $settings = [
             'description' => 'Rapid web development environment, based on Slim framework (Lite version)',
 
             // App keywords
-            'keywords' => 'database, php, slim, twig',
+            'keywords' => 'database, php, slim, swift-mailer, twig',
 
             // App author
             'author' => 'Enindu Alahapperuma',
@@ -103,7 +103,22 @@ $settings = [
             'collation' => 'utf8_unicode_ci',
 
             // Table prefix
-            'prefix' => getenv('DB_PREFIX')
+            'prefix' => ''
+        ],
+
+        // Mail array
+        'mail' => [
+            // SMTP host
+            'host' => '',
+
+            // SMTP port
+            'port' => '',
+
+            // SMTP username
+            'username' => '',
+
+            // SMTP password
+            'password' => ''
         ]
     ]
 ];

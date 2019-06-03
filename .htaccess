@@ -11,6 +11,12 @@
     #RewriteBase /
 
     ##
+    ## Force HTTPS redirect
+    ##
+    #RewriteCond %{HTTPS} off
+    #RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    ##
     ## Remove URL tailing slashes
     ##
     RewriteCond %{REQUEST_FILENAME} !-d

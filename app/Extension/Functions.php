@@ -31,21 +31,18 @@ class Functions extends AbstractExtension
     {
         // Return functions
         return [
-            new TwigFunction('echo', [$this, 'echo']),
+            new TwigFunction('example', [$this, 'example']),
         ];
     }
 
     /**
-     * Echo function in Twig templates
-     * 
-     * @param string $text Any kind of string
+     * Example function in Twig templates
      * 
      * @return void
      */
-    public function echo(string $text)
+    public function example()
     {
-        echo $text;
-
+        // Return false
         return;
     }
 }
