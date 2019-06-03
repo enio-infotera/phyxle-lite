@@ -22,6 +22,9 @@ class Base
     {
         // Get dependency container
         $this->container = $container;
+
+        // Get database to run on every request
+        $container->get('database');
     }
 
     /**

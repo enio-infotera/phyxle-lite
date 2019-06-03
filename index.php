@@ -18,6 +18,7 @@ $container = new Container($settings);
 // Load package container. Add new containers to bottom.
 require_once __DIR__ . "/config/filesystem.php";
 require_once __DIR__ . "/config/view.php";
+require_once __DIR__ . "/config/database.php";
 
 // Create app
 $app = new App($container);

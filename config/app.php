@@ -34,7 +34,7 @@ $settings = [
             'description' => 'Rapid web development environment, based on Slim framework (Lite version)',
 
             // App keywords
-            'keywords' => 'php, slim, twig',
+            'keywords' => 'database, php, slim, twig',
 
             // App author
             'author' => 'Enindu Alahapperuma',
@@ -77,6 +77,33 @@ $settings = [
 
             // Optimize templates
             'optimizations' => -1
+        ],
+
+        // Database array
+        'database' => [
+            // Database driver
+            'driver' => 'mysql',
+
+            // Database host
+            'host' => 'localhost',
+
+            // Database name
+            'database' => '',
+
+            // Database username
+            'username' => '',
+
+            // Database password
+            'password' => '',
+
+            // Database character set
+            'charset' => 'utf8',
+
+            // Database collation
+            'collation' => 'utf8_unicode_ci',
+
+            // Table prefix
+            'prefix' => getenv('DB_PREFIX')
         ]
     ]
 ];
