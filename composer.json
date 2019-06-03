@@ -6,6 +6,7 @@
         "eloquent",
         "php",
         "slim",
+        "slim-session",
         "swift-mailer",
         "twig",
         "validation"
@@ -20,6 +21,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
+        "bryanjhv/slim-session": "^3.6",
         "illuminate/database": "^5.8",
         "illuminate/events": "^5.8",
         "nesbot/carbon": "^2.19",

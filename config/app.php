@@ -34,7 +34,7 @@ $settings = [
             'description' => 'Rapid web development environment, based on Slim framework (Lite version)',
 
             // App keywords
-            'keywords' => 'carbon, eloquent, enindu, php, slim, swift-mailer, twig, validation',
+            'keywords' => 'carbon, eloquent, enindu, php, slim, slim-session, swift-mailer, twig, validation',
 
             // App author
             'author' => 'Enindu Alahapperuma',
@@ -137,6 +137,36 @@ $settings = [
 
             // Comparison error message
             'same' => 'Check confirm password'
+        ],
+
+        // Middleware array
+        'middleware' => [
+            // Session array
+            'session' => [
+                // Session lifetime
+                'lifetime' => 0,
+
+                // Session path
+                'path' => '/',
+
+                // Session domain
+                'domain' => '',
+
+                // Set session secure
+                'secure' => false,
+
+                // Set session for HTTP only
+                'httpOnly' => false,
+
+                // Session name
+                'name' => 'phyxle_session',
+
+                // Enable session auto refresh
+                'autoRefresh' => false,
+
+                // Session handler
+                'handler' => null
+            ]
         ]
     ]
 ];
