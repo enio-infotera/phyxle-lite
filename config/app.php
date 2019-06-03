@@ -34,7 +34,7 @@ $settings = [
             'description' => 'Rapid web development environment, based on Slim framework (Lite version)',
 
             // App keywords
-            'keywords' => 'eloquent, enindu, php, slim, swift-mailer, twig, validation',
+            'keywords' => 'carbon, eloquent, enindu, php, slim, swift-mailer, twig, validation',
 
             // App author
             'author' => 'Enindu Alahapperuma',

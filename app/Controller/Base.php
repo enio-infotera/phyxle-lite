@@ -17,6 +17,9 @@ class Base
     // Pass filesystem object to child controllers
     protected $filesystem;
 
+    // Pass time object to child controllers
+    protected $time;
+
     /**
      * Base controller constructor
      * 
@@ -29,6 +32,9 @@ class Base
 
         // Get filesystem object
         $this->filesystem = $container->get('filesystem');
+
+        // Get time object
+        $this->time = $container->get('time');
 
         // Get database to run on every request
         $container->get('database');
