@@ -60,18 +60,19 @@ class Base
     /**
      * Configure mail to use in child controllers
      * 
-     * @param array  $data Mail subject, from, to and body data
-     * @param string $type Mail type
+     * @param array  $data     Mail subject, from, to and body data
+     * @param string $template Mail template name
+     * @param string $type     Mail type
      * 
      * @return int
      */
-    protected function mail(array $data, string $type = 'text/html')
+    protected function mail(array $data, string $template = 'common', string $type = 'text/html')
     {
         // Get view object
         $view = $this->container->get('view');
 
         // Create mail template
-        $template = $view->render('templates/mail.twig', $data);
+        $mailTemplate = $view->render('templates/mails/' . $template . '.twig', $data);
 
         // Get message object
         $message = $this->container->get('message');
@@ -80,7 +81,7 @@ class Base
         $message->setSubject($data['subject']);
         $message->setFrom($data['from']);
         $message->setTo($data['to']);
-        $message->setBody($template, $type);
+        $message->setBody($mailTemplate, $type);
 
         // Get mail object
         $mail = $this->container->get('mail');
