@@ -7,7 +7,7 @@ use Slim\Container as SlimContainer;
 
 // Database container
 $container['database'] = function(SlimContainer $container) {
-    // Database settings
+    // Get database settings
     $settings = $container->get('settings')['database'];
 
     // Create database object

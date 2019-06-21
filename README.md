@@ -12,7 +12,7 @@ Rapid web development environment, based on [Slim](https://www.slimframework.com
 - Session management with [Slim Session](https://github.com/bryanjhv/slim-session) library
 
 ## Install
-Install Phyxle using [Composer](https://getcomposer.org) or clone repository using [Git](https://git-scm.com). If you cloned repository, make sure to install [Composer](https://getcomposer.org) packages using `composer install` command.
+Install Phyxle Lite using [Composer](https://getcomposer.org) or clone repository using [Git](https://git-scm.com). If you cloned repository, make sure to install [Composer](https://getcomposer.org) packages using `composer install` command.
 ```
 $ composer create-project enindu/phyxle-lite <project name>
 ```
@@ -86,7 +86,7 @@ $app->get('/example', Example::class . ':method');
 ```
 
 ## Views
-App view templates can be found at `resources/views/` directory. Phyxle uses [Twig](https://twig.symfony.com) as template engine. You can extend Twig by adding more filters or functions or global variables that can be found at `app/Extension/` directory. For more information, refer [Twig documentation](https://twig.symfony.com/doc/2.x/).
+App view templates can be found at `resources/views/` directory. Phyxle Lite uses [Twig](https://twig.symfony.com) as template engine. You can extend Twig by adding more filters or functions or global variables that can be found at `app/Extension/` directory. For more information, refer [Twig documentation](https://twig.symfony.com/doc/2.x/).
 
 Define assets by using `asset` filter.
 ```twig

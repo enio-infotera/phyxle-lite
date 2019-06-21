@@ -3,7 +3,7 @@
 use Slim\Container;
 use Slim\Middleware\Session;
 
-// Session container
+// Session middleware container
 $container['session'] = function(Container $container) {
     // Get session middleware settings
     $settings = $container->get('settings')['middleware']['session'];

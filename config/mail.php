@@ -4,7 +4,7 @@ use Slim\Container;
 
 // Mail container
 $container['mail'] = function(Container $container) {
-    // Mail settings
+    // Get mail settings
     $settings = $container->get('settings')['mail'];
 
     // Create transport object

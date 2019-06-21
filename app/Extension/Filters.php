@@ -13,7 +13,7 @@ class Filters extends AbstractExtension
     private $container;
 
     /**
-     * Filters extension constructer
+     * Filters extension constructor
      * 
      * @param Container $container PSR-11 container object
      */
@@ -50,10 +50,10 @@ class Filters extends AbstractExtension
         // Get filesystem object
         $filesystem = $this->container->get('filesystem');
 
-        // Get absolute path of asset
+        // Get absolute path to asset
         $asset = __DIR__ . "/../../resources/assets/" . $file;
 
-        // Check if asset not available
+        // Check if asset is not available
         if(!$filesystem->exists($asset)) {
             throw new RuntimeError('Unable to find "' . $file . '".');
         }

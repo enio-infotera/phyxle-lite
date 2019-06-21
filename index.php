@@ -3,7 +3,7 @@
 use Slim\App;
 use Slim\Container;
 
-// Require Conposer autoload
+// Require Composer autoload
 require_once __DIR__ . "/vendor/autoload.php";
 
 // Require app configurations

@@ -1,6 +1,6 @@
 <?php
 
-// Settings array
+// App configurations
 $settings = [
     // Settings container
     'settings' => [
@@ -25,7 +25,7 @@ $settings = [
         // Cache file names
         'routerCacheFile' => false,
 
-        // App array
+        // App settings
         'app' => [
             // App name
             'name' => 'Phyxle Lite',
@@ -49,7 +49,7 @@ $settings = [
             'timezone' => 'Asia/Colombo'
         ],
 
-        // View array
+        // View settings
         'view' => [
             // Templates directory
             'views' => __DIR__ . '/../resources/views/',
@@ -69,7 +69,7 @@ $settings = [
             // Enable cached templates to auto reload
             'autoReload' => true,
 
-            // Throw error if invalid template variable use
+            // Throw error if invalid template variable used
             'strictVariables' => true,
 
             // Auto escape characters
@@ -79,7 +79,7 @@ $settings = [
             'optimizations' => -1
         ],
 
-        // Database array
+        // Database settings
         'database' => [
             // Database driver
             'driver' => 'mysql',
@@ -106,7 +106,7 @@ $settings = [
             'prefix' => ''
         ],
 
-        // Mail array
+        // Mail settings
         'mail' => [
             // SMTP host
             'host' => '',
@@ -121,16 +121,16 @@ $settings = [
             'password' => ''
         ],
 
-        // Validation array
+        // Validation settings
         'validation' => [
             // Required error message
             'required' => 'Cannot leave empty fields',
 
             // Minimum characters error message
-            'min' => 'Passwords should be minimum 6 characters',
+            'min' => 'Some input fields should be minimum 6 characters',
 
             // Maximum characters error message
-            'max' => 'Passwords should be maximum 32 characters',
+            'max' => 'Some input fields should be maximum 32 characters',
 
             // Email error message
             'email' => 'Email is invalid',
@@ -139,9 +139,9 @@ $settings = [
             'same' => 'Check confirm password'
         ],
 
-        // Middleware array
+        // Middleware configurations
         'middleware' => [
-            // Session array
+            // Session middleware settings
             'session' => [
                 // Session lifetime
                 'lifetime' => 0,

@@ -5,13 +5,13 @@ use Slim\Container;
 
 // Validation container
 $container['validation'] = function(Container $container) {
-    // Validation settings
+    // Get validation settings
     $settings = $container->get('settings')['validation'];
 
     // Create validation object
     $validation = new Validator;
 
-    // Add custom error messages to validation
+    // Configure validation
     $validation->setMessages([
         'required' => $settings['required'],
         'min' => $settings['min'],

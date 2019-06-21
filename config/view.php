@@ -7,7 +7,7 @@ use Slim\Container;
 
 // View container
 $container['view'] = function(Container $container) {
-    // View settings
+    // Get view settings
     $settings = $container->get('settings')['view'];
 
     // Create view object
