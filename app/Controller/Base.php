@@ -66,7 +66,7 @@ class Base
      * 
      * @return int
      */
-    protected function mail(array $data, string $template = 'common', string $type = 'text/html')
+    protected function mail(array $data, string $template = 'base', string $type = 'text/html')
     {
         // Get view object
         $view = $this->container->get('view');
