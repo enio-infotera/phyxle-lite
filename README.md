@@ -31,10 +31,10 @@ use Slim\Http\Response;
 
 class Example extends Base
 {
-    public function method(Request $request, Response $response, array $data)
-    {
-        // Code goes here
-    }
+  public function method(Request $request, Response $response, array $data)
+  {
+    // Code goes here
+  }
 }
 ```
 
@@ -53,10 +53,10 @@ return $this->view($response, 'example.twig');
 Send mails in controllers by using `$this->mail` method from `Base` controller. For more information, refer [Swift Mailer documentation](https://swiftmailer.symfony.com/docs/introduction.html).
 ```php
 $this->mail([
-    'subject' => 'Mail Subject',
-    'from' => ['John Doe' => 'john@example.com'],
-    'to' => ['Brad Peter' => 'brad@example.com'],
-    'body' => 'Mail Body'
+  'subject' => 'Mail Subject',
+  'from'    => ['John Doe' => 'john@example.com'],
+  'to'      => ['Brad Peter' => 'brad@example.com'],
+  'body'    => 'Mail Body'
 ]);
 ```
 
@@ -73,7 +73,7 @@ $this->filesystem
 Validate form input fields in controllers by using `$this->validator` method from `Base` controller. For more information, refer [Validation documentation](https://github.com/rakit/validation/blob/master/README.md).
 ```php
 $validation = $this->validator($request, [
-    'input' => 'required|min:6|max:16'
+  'input' => 'required|min:6|max:16'
 ]);
 ```
 

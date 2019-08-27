@@ -1,4 +1,5 @@
 <?php
 
-// App middleware. Add new middleware to top.
+// Middleware
+// Add new middleware here
 $app->add($container->get('session'));

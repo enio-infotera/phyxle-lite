@@ -8,110 +8,105 @@ use Slim\Http\Response;
 
 class Base
 {
-    // Get contained packages from containers
-    protected $container;
+  // Dependency container
+  protected $container;
 
-    // Pass data to view templates
-    protected $data = [];
+  // Template data array
+  protected $data;
 
-    // Pass filesystem object to child controllers
-    protected $filesystem;
+  // Filesystem object
+  protected $filesystem;
 
-    // Pass time object to child controllers
-    protected $time;
+  // Time object
+  protected $time;
 
-    /**
-     * Base controller constructor
-     * 
-     * @param Container $container PSR-11 container object
-     */
-    public function __construct(Container $container)
-    {
-        // Get dependency container
-        $this->container = $container;
+  /**
+   * Constructor
+   * 
+   * @param Container $container PSR-11 container object
+   */
+  public function __construct(Container $container)
+  {
+    // Get dependency container
+    $this->container = $container;
 
-        // Get filesystem object
-        $this->filesystem = $container->get('filesystem');
+    // Get template data array
+    $this->data = [];
 
-        // Get time object
-        $this->time = $container->get('time');
+    // Get contained objects
+    $this->filesystem = $container->get('filesystem');
+    $this->view = $container->get('view');
+    $this->time = $container->get('time');
 
-        // Get database to run on every request
-        $container->get('database');
+    // Run database object
+    $container->get('database');
+  }
+
+  /**
+   * Use templates
+   * 
+   * @param Response $response PSR-7 response object
+   * @param string   $template Twig template file name
+   * 
+   * @return Response
+   */
+  protected function view(Response $response, string $template)
+  {
+    return $response->withHeader('Content-Type', 'text/html')->write($this->view->render($template, $this->data));
+  }
+
+  /**
+   * Send mails
+   * 
+   * @param array  $data     Mail subject, from, to and body data
+   * @param string $template Mail template name
+   * @param string $type     Mail type
+   * 
+   * @return int
+   */
+  protected function mail(array $data, string $template = 'base', string $type = 'text/html')
+  {
+    // Get mail template
+    $template = $this->view->render('templates/mails/' . $template . '.twig', $data);
+
+    // Get message object
+    $message = $this->container->get('message');
+
+    // Create mail
+    $message->setSubject($data['subject']);
+    $message->setFrom($data['from']);
+    $message->setTo($data['to']);
+    $message->setBody($template, $type);
+
+    // Get mail object
+    $mail = $this->container->get('mail');
+
+    // Send mail
+    return $mail->send($message);
+  }
+
+  /**
+   * Use form validation
+   * 
+   * @param Request $request PSR-7 request object
+   * @param array   $input   Form input data
+   * 
+   * @return array|bool
+   */
+  protected function validator(Request $request, array $input)
+  {
+    // Get validation object
+    $validator = $this->container->get('validation');
+
+    // Validate form
+    $validation = $validator->validate($request->getParams(), $input);
+
+    // Check validation
+    if($validation->fails()) {
+      return $validation->errors()->firstOfAll();
     }
 
-    /**
-     * Configure view to use in child controllers
-     * 
-     * @param Response $response PSR-7 response object
-     * @param string   $template Twig template file name
-     * 
-     * @return Response
-     */
-    protected function view(Response $response, string $template)
-    {
-        // Get view object
-        $view = $this->container->get('view');
-
-        // Return response
-        return $response->withHeader('Content-Type', 'text/html')->write($view->render($template, $this->data));
-    }
-
-    /**
-     * Configure mail to use in child controllers
-     * 
-     * @param array  $data     Mail subject, from, to and body data
-     * @param string $template Mail template name
-     * @param string $type     Mail type
-     * 
-     * @return int
-     */
-    protected function mail(array $data, string $template = 'base', string $type = 'text/html')
-    {
-        // Get view object
-        $view = $this->container->get('view');
-
-        // Create mail template
-        $mailTemplate = $view->render('templates/mails/' . $template . '.twig', $data);
-
-        // Get message object
-        $message = $this->container->get('message');
-
-        // Create mail
-        $message->setSubject($data['subject']);
-        $message->setFrom($data['from']);
-        $message->setTo($data['to']);
-        $message->setBody($mailTemplate, $type);
-
-        // Get mail object
-        $mail = $this->container->get('mail');
-
-        // Send mail
-        return $mail->send($message);
-    }
-
-    /**
-     * Configure input field validation to use in child controllers
-     * 
-     * @param Request $request PSR-7 request object
-     * @param array   $input   Form input data
-     * 
-     * @return array|bool
-     */
-    protected function validator(Request $request, array $input)
-    {
-        // Get validation object
-        $validator = $this->container->get('validation');
-
-        // Validate input fields
-        $validation = $validator->validate($request->getParams(), $input);
-
-        // Check if invalid input fields
-        if($validation->fails()) {
-            return $validation->errors()->firstOfAll();
-        }
-
-        // Return false
-        return;
-    }
+    // Return false
+    return;
+  }
 }

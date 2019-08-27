@@ -8,41 +8,39 @@ use Twig\TwigFunction;
 
 class Functions extends AbstractExtension
 {
-    // Get contained packages from containers
-    private $container;
+  // Dependency container
+  private $container;
 
-    /**
-     * Functions extension constructor
-     *
-     * @param Container $container PSR-11 container object
-     */
-    public function __construct(Container $container)
-    {
-        // Get dependency container
-        $this->container = $container;
-    }
+  /**
+   * Constructor
+   *
+   * @param Container $container PSR-11 container object
+   */
+  public function __construct(Container $container)
+  {
+    // Get dependency container
+    $this->container = $container;
+  }
 
-    /**
-     * Define Twig functions
-     *
-     * @return array
-     */
-    public function getFunctions()
-    {
-        // Return functions
-        return [
-            new TwigFunction('echo', [$this, 'echo']),
-        ];
-    }
+  /**
+   * Functions
+   *
+   * @return array
+   */
+  public function getFunctions()
+  {
+    return [
+      new TwigFunction('echo', [$this, 'echo']),
+    ];
+  }
 
-    /**
-     * Echo function in Twig templates
-     * 
-     * @return void
-     */
-    public function echo(string $text)
-    {
-        // Return string
-        return $text;
-    }
+  /**
+   * Echo function
+   * 
+   * @return string
+   */
+  public function echo(string $text)
+  {
+    return $text;
+  }
 }

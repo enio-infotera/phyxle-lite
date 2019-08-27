@@ -2,5 +2,5 @@
 
 use App\Controller\Pages;
 
-// App routes
+// Routes
 $app->get('/', Pages::class . ':home');

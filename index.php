@@ -3,22 +3,23 @@
 use Slim\App;
 use Slim\Container;
 
-// Require Composer autoload
+// Composer autoload
 require_once __DIR__ . "/vendor/autoload.php";
 
-// Require app configurations
+// App configurations
 require_once __DIR__ . "/config/app.php";
 
-// Configure app timezone
+// App timezone
 date_default_timezone_set($settings['settings']['app']['timezone']);
 
-// Create app container
+// Create dependency container
 $container = new Container($settings);
 
-// Load middleware containers. Add new containers to bottom.
+// Middleware containers
 require_once __DIR__ . "/config/middleware/session.php";
+// Add new middleware container here
 
-// Load package containers. Add new containers to bottom.
+// Package containers
 require_once __DIR__ . "/config/filesystem.php";
 require_once __DIR__ . "/config/view.php";
 require_once __DIR__ . "/config/database.php";
@@ -26,14 +27,15 @@ require_once __DIR__ . "/config/mail.php";
 require_once __DIR__ . "/config/validation.php";
 require_once __DIR__ . "/config/time.php";
 require_once __DIR__ . "/config/errors.php";
+// Add new package container here
 
 // Create app
 $app = new App($container);
 
-// Require app middleware
+// Middleware
 require_once __DIR__ . "/app/middleware.php";
 
-// Require app routes
+// Routes
 require_once __DIR__ . "/app/routes.php";
 
 // Run app

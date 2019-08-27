@@ -1,47 +1,35 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
+  <IfModule mod_negotiation.c>
+    Options -MultiViews -Indexes
+  </IfModule>
 
-    RewriteEngine On
+  RewriteEngine On
 
-    ##
-    ## Website root directory
-    ##
-    #RewriteBase /
+  # Root directory
+  #RewriteBase /
 
-    ##
-    ## Force HTTPS redirect
-    ##
-    #RewriteCond %{HTTPS} off
-    #RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # Force HTTPS redirect
+  #RewriteCond %{HTTPS} off
+  #RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    ##
-    ## Remove URL tailing slashes
-    ##
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R]
+  # Remove URL tailing slashes
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [L,R]
 
-    ##
-    ## Blacklist folders
-    ##
-    RewriteRule ^app/.* index.php [L,F]
-    RewriteRule ^cache/.* index.php [L,F]
-    RewriteRule ^config/.* index.php [L,F]
-    RewriteRule ^resources/views/.* index.php [L,F]
-    RewriteRule ^vendor/.* index.php [L,F]
+  # Blacklist folders
+  RewriteRule ^app/.* index.php [L,F]
+  RewriteRule ^cache/.* index.php [L,F]
+  RewriteRule ^config/.* index.php [L,F]
+  RewriteRule ^resources/views/.* index.php [L,F]
+  RewriteRule ^vendor/.* index.php [L,F]
 
-    ##
-    ## Blacklist files
-    ##
-    RewriteRule /?\.htaccess$ - [L,F]
-    RewriteRule /?\.json$ - [L,F]
-    RewriteRule /?\.lock$ - [L,F]
+  # Blacklist files
+  RewriteRule /?\.htaccess$ - [L,F]
+  RewriteRule /?\.json$ - [L,F]
+  RewriteRule /?\.lock$ - [L,F]
 
-    ##
-    ## Standard route
-    ##
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+  # Standard route
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^ index.php [L]
 </IfModule>

@@ -5,21 +5,20 @@ use Slim\Container;
 
 // Validation container
 $container['validation'] = function(Container $container) {
-    // Get validation settings
-    $settings = $container->get('settings')['validation'];
+  // Get validation settings
+  $settings = $container->get('settings')['validation'];
 
-    // Create validation object
-    $validation = new Validator;
+  // Create validation object
+  $validation = new Validator;
 
-    // Configure validation
-    $validation->setMessages([
-        'required' => $settings['required'],
-        'min' => $settings['min'],
-        'max' => $settings['max'],
-        'email' => $settings['email'],
-        'same' => $settings['same']
-    ]);
+  $validation->setMessages([
+    'required' => $settings['required'],
+    'min'      => $settings['min'],
+    'max'      => $settings['max'],
+    'email'    => $settings['email'],
+    'same'     => $settings['same']
+  ]);
 
-    // Return validation object
-    return $validation;
+  // Return validation object
+  return $validation;
 };

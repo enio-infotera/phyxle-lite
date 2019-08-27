@@ -7,29 +7,27 @@ use Slim\Container as SlimContainer;
 
 // Database container
 $container['database'] = function(SlimContainer $container) {
-    // Get database settings
-    $settings = $container->get('settings')['database'];
+  // Get database settings
+  $settings = $container->get('settings')['database'];
 
-    // Create database object
-    $database = new Manager;
+  // Create database object
+  $database = new Manager;
 
-    // Configure database
-    $database->addConnection([
-        'driver' => $settings['driver'],
-        'host' => $settings['host'],
-        'database' => $settings['database'],
-        'username' => $settings['username'],
-        'password' => $settings['password'],
-        'charset' => $settings['charset'],
-        'collation' => $settings['collation'],
-        'prefix' => $settings['prefix']
-    ]);
+  $database->addConnection([
+    'driver'    => $settings['driver'],
+    'host'      => $settings['host'],
+    'database'  => $settings['database'],
+    'username'  => $settings['username'],
+    'password'  => $settings['password'],
+    'charset'   => $settings['charset'],
+    'collation' => $settings['collation'],
+    'prefix'    => $settings['prefix']
+  ]);
 
-    // Configure Eloquent ORM
-    $database->setEventDispatcher(new Dispatcher(new IlluminateContainer));
-    $database->setAsGlobal();
-    $database->bootEloquent();
-    
-    // Return database object
-    return $database;
+  $database->setEventDispatcher(new Dispatcher(new IlluminateContainer));
+  $database->setAsGlobal();
+  $database->bootEloquent();
+  
+  // Return database object
+  return $database;
 };

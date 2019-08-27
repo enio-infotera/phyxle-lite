@@ -1,172 +1,82 @@
 <?php
 
-// App configurations
 $settings = [
-    // Settings container
-    'settings' => [
-        // Protocol version used by response object
-        'httpVersion' => '1.1',
+  'settings' => [
+    // Slim settings
+    'httpVersion'                       => '1.1',
+    'responseChunkSize'                 => 4096,
+    'outputBuffering'                   => 'prepend',
+    'determineRouteBeforeAppMiddleware' => false,
+    'displayErrorDetails'               => true,
+    'addContentLengthHeader'            => true,
+    'routerCacheFile'                   => false,
 
-        // Size of each response chunk
-        'responseChunkSize' => 4096,
+    // App settings
+    'app' => [
+      'name'        => 'Phyxle Lite',
+      'description' => 'Rapid web development environment, based on Slim framework (Lite version)',
+      'keywords'    => 'carbon, eloquent, enindu, php, slim, slim-session, swift-mailer, twig, validation',
+      'author'      => 'Enindu Alahapperuma',
+      'url'         => 'http://localhost',
+      'email'       => 'enindu@gmail.com',
+      'timezone'    => 'Asia/Colombo'
+    ],
 
-        // Prepend or append output buffer
-        'outputBuffering' => 'prepend',
+    // View settings
+    'view' => [
+      'views'             => __DIR__ . '/../resources/views/',
+      'debug'             => false,
+      'charset'           => 'utf-8',
+      'baseTemplateClass' => '\Twig\Template',
+      'cache'             => __DIR__ . '/../cache/',
+      'autoReload'        => true,
+      'strictVariables'   => true,
+      'autoEscape'        => 'html',
+      'optimizations'     => -1
+    ],
 
-        // Calculate routes before app middleware
-        'determineRouteBeforeAppMiddleware' => false,
+    // Database settings
+    'database' => [
+      'driver'    => 'mysql',
+      'host'      => 'localhost',
+      'database'  => '',
+      'username'  => '',
+      'password'  => '',
+      'charset'   => 'utf8',
+      'collation' => 'utf8_unicode_ci',
+      'prefix'    => ''
+    ],
 
-        // Display Slim errors. Set false in production mode.
-        'displayErrorDetails' => true,
+    // Mail settings
+    'mail' => [
+      'host'     => '',
+      'port'     => '',
+      'username' => '',
+      'password' => ''
+    ],
 
-        // Add content length header to response object
-        'addContentLengthHeader' => true,
+    // Validation settings
+    'validation' => [
+      'required' => 'Cannot leave empty fields',
+      'min'      => 'Some input fields should be minimum 6 characters',
+      'max'      => 'Some input fields should be maximum 32 characters',
+      'email'    => 'Email is invalid',
+      'numeric'  => 'Some input fields require only numbers',
+      'same'     => 'Check confirm password'
+    ],
 
-        // Cache file names
-        'routerCacheFile' => false,
-
-        // App settings
-        'app' => [
-            // App name
-            'name' => 'Phyxle Lite',
-
-            // App description
-            'description' => 'Rapid web development environment, based on Slim framework (Lite version)',
-
-            // App keywords
-            'keywords' => 'carbon, eloquent, enindu, php, slim, slim-session, swift-mailer, twig, validation',
-
-            // App author
-            'author' => 'Enindu Alahapperuma',
-
-            // App URL
-            'url' => 'http://localhost',
-
-            // App email
-            'email' => 'enindu@gmail.com',
-
-            // App timezone
-            'timezone' => 'Asia/Colombo'
-        ],
-
-        // View settings
-        'view' => [
-            // Templates directory
-            'views' => __DIR__ . '/../resources/views/',
-
-            // Enable debug mode
-            'debug' => false,
-
-            // Templates character set
-            'charset' => 'utf-8',
-
-            // Base template class to render
-            'baseTemplateClass' => '\Twig\Template',
-
-            // Cache directory
-            'cache' => __DIR__ . '/../cache/',
-
-            // Enable cached templates to auto reload
-            'autoReload' => true,
-
-            // Throw error if invalid template variable used
-            'strictVariables' => true,
-
-            // Auto escape characters
-            'autoEscape' => 'html',
-
-            // Optimize templates
-            'optimizations' => -1
-        ],
-
-        // Database settings
-        'database' => [
-            // Database driver
-            'driver' => 'mysql',
-
-            // Database host
-            'host' => 'localhost',
-
-            // Database name
-            'database' => '',
-
-            // Database username
-            'username' => '',
-
-            // Database password
-            'password' => '',
-
-            // Database character set
-            'charset' => 'utf8',
-
-            // Database collation
-            'collation' => 'utf8_unicode_ci',
-
-            // Table prefix
-            'prefix' => ''
-        ],
-
-        // Mail settings
-        'mail' => [
-            // SMTP host
-            'host' => '',
-
-            // SMTP port
-            'port' => '',
-
-            // SMTP username
-            'username' => '',
-
-            // SMTP password
-            'password' => ''
-        ],
-
-        // Validation settings
-        'validation' => [
-            // Required error message
-            'required' => 'Cannot leave empty fields',
-
-            // Minimum characters error message
-            'min' => 'Some input fields should be minimum 6 characters',
-
-            // Maximum characters error message
-            'max' => 'Some input fields should be maximum 32 characters',
-
-            // Email error message
-            'email' => 'Email is invalid',
-
-            // Comparison error message
-            'same' => 'Check confirm password'
-        ],
-
-        // Middleware configurations
-        'middleware' => [
-            // Session middleware settings
-            'session' => [
-                // Session lifetime
-                'lifetime' => 0,
-
-                // Session path
-                'path' => '/',
-
-                // Session domain
-                'domain' => '',
-
-                // Set session secure
-                'secure' => false,
-
-                // Set session for HTTP only
-                'httpOnly' => false,
-
-                // Session name
-                'name' => 'phyxle_session',
-
-                // Enable session auto refresh
-                'autoRefresh' => false,
-
-                // Session handler
-                'handler' => null
-            ]
-        ]
+    'middleware' => [
+      // Session middleware settings
+      'session' => [
+        'lifetime'    => 0,
+        'path'        => '/',
+        'domain'      => '',
+        'secure'      => false,
+        'httpOnly'    => false,
+        'name'        => 'phyxle_session',
+        'autoRefresh' => false,
+        'handler'     => null
+      ]
     ]
+  ]
 ];
