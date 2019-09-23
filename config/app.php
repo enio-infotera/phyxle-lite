@@ -58,8 +58,8 @@ $settings = [
     // Validation settings
     'validation' => [
       'required' => 'Cannot leave empty fields',
-      'min'      => 'Some input fields should be minimum 6 characters',
-      'max'      => 'Some input fields should be maximum 32 characters',
+      'min'      => 'Some input fields have minimum characters length',
+      'max'      => 'Some input fields have maximum characters length',
       'email'    => 'Email is invalid',
       'numeric'  => 'Some input fields require only numbers',
       'same'     => 'Check confirm password'
