@@ -37,6 +37,8 @@ class Functions extends AbstractExtension
   /**
    * Echo function
    * 
+   * @param string $text String to echo
+   * 
    * @return string
    */
   public function echo(string $text)
