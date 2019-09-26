@@ -30,7 +30,7 @@ class Functions extends AbstractExtension
   public function getFunctions()
   {
     return [
-      new TwigFunction('echo', [$this, 'echo']),
+      new TwigFunction('echo', [$this, 'echo'])
     ];
   }
 
